@@ -5,9 +5,6 @@
  *  Author: yehia
  */ 
 #include "DIO.h"
-#define  Fifteen 15
-#define  Four  4
-# define shift_Left <<
 void DIO_WritePinDir(uint8 Port,uint8 PinNo,STD_Direction Dir)
 {
 	switch(Port)
@@ -62,6 +59,8 @@ void DIO_WritePinDir(uint8 Port,uint8 PinNo,STD_Direction Dir)
 }
 void DIO_WritePin(uint8 Port,uint8 PinNo,STD_levelType level)
 {
+	/* Set one if you want the pin to be high 
+	and zero if you want the pin to be input*/
 	switch(Port)
 	{
 		case 'A':
@@ -113,24 +112,25 @@ void DIO_WritePin(uint8 Port,uint8 PinNo,STD_levelType level)
 }
 STD_levelType DIO_ReadPin(uint8 Port,uint8 PinNo)
 {
+	/*Get the val  of the pin then return */
 	STD_levelType ret = -1;
 	switch(Port)
 	{
 		case 'A':
 		case 'a':
-		ret = GIT_Bit(PIN_A,PinNo);
+		ret = GET_Bit(PIN_A,PinNo);
 		break;
 		case 'B':
 		case 'b':
-		ret = GIT_Bit(PIN_B,PinNo);
+		ret = GET_Bit(PIN_B,PinNo);
 		break;
 		case 'C':
 		case 'c':
-		ret = GIT_Bit(PIN_C,PinNo);
+		ret = GET_Bit(PIN_C,PinNo);
 		break;
 		case 'D':
 		case 'd':
-		ret = GIT_Bit(PIN_D,PinNo);
+		ret = GET_Bit(PIN_D,PinNo);
 		break;
 	}
 	return ret;
@@ -172,7 +172,7 @@ uint8 Dio_ReadPort(uint8 PORT )
 		case 'a':
 		for (uint8 i = 0; i < 8; i++)
 		{
-			if (GIT_Bit(PIN_A,i) == 1) // if the bit equals one change the value of sum 
+			if (GET_Bit(PIN_A,i) == 1) // if the bit equals one change the value of sum 
 			{
 				sum += count;
 			}
@@ -187,9 +187,9 @@ uint8 Dio_ReadPort(uint8 PORT )
 		case 'b':
 		for (uint8 i = 0; i < 8; i++)
 		{
-			if (GIT_Bit(PIN_B,i) == 1)
+			if (GET_Bit(PIN_B,i) == 1)  // if the bit equals one change the value of sum 
 			{
-				sum += count;
+				sum += count;      
 			}
 			else
 			{
@@ -200,9 +200,9 @@ uint8 Dio_ReadPort(uint8 PORT )
 		break;
 		case 'C':
 		case 'c':
-		for (uint8 i = 0; i < 8; i++)
+		for (uint8 i = 0; i < 8; i++)	// if the bit equals one change the value of sum 
 		{
-			if (GIT_Bit(PIN_C,i) == 1)
+			if (GET_Bit(PIN_C,i) == 1)
 			{
 				sum += count;
 			}
@@ -217,7 +217,7 @@ uint8 Dio_ReadPort(uint8 PORT )
 		case 'd':
 		for (uint8 i = 0; i < 8; i++)
 		{
-			if (GIT_Bit(PIN_D,i) == 1)
+			if (GET_Bit(PIN_D,i)  == 1)   // if the bit equals one change the value of sum 
 			{
 				sum += count;
 			}
@@ -282,23 +282,23 @@ void Dio_WriteHighNibbleVal(uint8 port, uint8 val)
 	{
 		case 'A':
 		case 'a':
-		PORT_A &= ~(Fifteen shift_Left Four); //clear the the last 4 bit in port A 
-		PORT_A |= (val<<4);   //set the value of the last 4 bit in port A
+		PORT_A &= 0x0F; //clear the the last 4 bit in port A 
+		PORT_A |= (val & 0xF0);   //set the value of the last 4 bit in port A
 		break;
 		case 'B':
 		case 'b':
-		PORT_B &= ~(Fifteen shift_Left Four); //clear the the last 4 bit in port B
-		PORT_B |= (val shift_Left Four);   //set the value of the last 4 bit in port B
+		PORT_B &= 0x0F; //clear the the last 4 bit in port B
+		PORT_B |= (val & 0xF0);   //set the value of the last 4 bit in port B
 		break;
 		case 'C':
 		case 'c':
-		PORT_C &= ~(Fifteen shift_Left Four); //clear the the last 4 bit in port c
-		PORT_C |= (val shift_Left Four);   //set the value of the last 4 bit in port c
+		PORT_C &= 0x0F; //clear the the last 4 bit in port c
+		PORT_C |= (val & 0xF0);   //set the value of the last 4 bit in port c
 		break;
 		case 'D':
 		case 'd':
-		PORT_D &= ~(Fifteen shift_Left Four); //clear the the last 4 bit in port D
-		PORT_D |= (val shift_Left Four);   //set the value of the last 4 bit in port D
+		PORT_D  &= 0x0F; //clear the the last 4 bit in port D
+		PORT_D |= (val & 0xF0);    //set the value of the last 4 bit in port D
 		break;
 	}
 }
@@ -308,22 +308,22 @@ void Dio_WriteLowNibbleVal(uint8 port, uint8 val)
 	{
 		case 'A':
 		case 'a':
-		PORT_A &= ~(Fifteen); //clear the the first 4 bit in port A
+		PORT_A &= 0xF0; //clear the  first 4 bit in port A
 		PORT_A |= val;   //set the value of the first 4 bit in port A
 		break;
 		case 'B':
 		case 'b':
-		PORT_B &= ~Fifteen; //clear the the first 4 bit in port B
+		PORT_B &= 0xF0; //clear the  first 4 bit in port B
 		PORT_B |= val;   //set the value of the first 4 bit in port B
 		break;
 		case 'C':
 		case 'c':
-		PORT_C &= ~(Fifteen); //clear the the first 4 bit in port c
+		PORT_C &= 0xF0; //clear the  first 4 bit in port c
 		PORT_C |= val;   //set the value of the first 4 bit in port c
 		break;
 		case 'D':
 		case 'd':
-		PORT_D &= ~(Fifteen); //clear the the first 4 bit in port D
+		PORT_D &= 0xF0; //clear the first 4 bit in port D
 		PORT_D |= val;   //set the value of the first 4 bit in port D
 		break;
 	}
@@ -336,22 +336,22 @@ void Dio_WriteHighNibbleDir(uint8 port, STD_Direction dir)
 		case 'a':
 		if (dir == STD_IN)
 		{
-			DDR_A &= ~(Fifteen shift_Left Four); //make the last 4 bit in port A are input 
+			DDR_A &= 0x0F; //make the last 4 bit in port A are input 
 		}
 		else
 		{
-			DDR_A |= (Fifteen shift_Left Four); //set the direction of the last 4 bit in port A "output"
+			DDR_A |= 0xF0; //set the direction of the last 4 bit in port A "output"
 		}
 		break;
 		case 'B':
 		case 'b':
 		if (dir == STD_IN)
 		{
-			DDR_B &= ~(Fifteen shift_Left Four); //make the last 4 bit in port B are input 
+			DDR_B &= 0x0F; //make the last 4 bit in port B are input 
 		}
 		else
 		{
-			DDR_B |= (Fifteen shift_Left Four);   //set the direction of the last 4 bit in port B "output"
+			DDR_B |= 0xF0;   //set the direction of the last 4 bit in port B "output"
 		}
 		
 		
@@ -359,22 +359,22 @@ void Dio_WriteHighNibbleDir(uint8 port, STD_Direction dir)
 		case 'c':
 		if (dir == STD_IN)
 		{
-			DDR_C &= ~(Fifteen shift_Left Four); //make the last 4 bit in port C are input
+			DDR_C &= 0x0F; //make the last 4 bit in port C are input
 		}
 		else
 		{
-			DDR_C |= (Fifteen shift_Left Four); //set the direction of the last 4 bit in port C "output"
+			DDR_C |= 0xF0; //set the direction of the last 4 bit in port C "output"
 		}
 		break;
 		case 'D':
 		case 'd':
 		if (dir == STD_IN)
 		{
-			DDR_D &= ~(Fifteen shift_Left Four); //make the last 4 bit in port D are input
+			DDR_D &= 0x0F; //make the last 4 bit in port D are input
 		}
 		else
 		{
-			DDR_D |= (Fifteen shift_Left Four);   //set the direction of the last 4 bit in port D "output"
+			DDR_D |= 0xF0;   //set the direction of the last 4 bit in port D "output"
 		}
 		
 		
@@ -389,22 +389,22 @@ void Dio_WriteLowNibbleDir(uint8 port, STD_Direction dir)
 		case 'a':
 		if (dir == STD_IN)
 		{
-			DDR_A &= ~(Fifteen); //make the first 4 bit in port A are input
+			DDR_A &= 0xF0; //make the first 4 bit in port A are input
 		}
 		else
 		{
-			DDR_A |= (Fifteen ); //set the direction of the first 4 bit in port A "output"
+			DDR_A |= 0x0F; //set the direction of the first 4 bit in port A "output"
 		}
 		break;
 		case 'B':
 		case 'b':
 		if (dir == STD_IN)
 		{
-			DDR_B &= ~(Fifteen); //make the first 4 bit in port B are input
+			DDR_B &= 0xF0; //make the first 4 bit in port B are input
 		}
 		else
 		{
-			DDR_B |= (Fifteen );   //set the direction of the first 4 bit in port B "output"
+			DDR_B |= 0x0F;   //set the direction of the first 4 bit in port B "output"
 		}
 		
 		
@@ -412,25 +412,27 @@ void Dio_WriteLowNibbleDir(uint8 port, STD_Direction dir)
 		case 'c':
 		if (dir == STD_IN)
 		{
-			DDR_C &= ~(Fifteen ); //make the first 4 bit in port C are input
+			DDR_C &= 0xF0; //make the first 4 bit in port C are input
 		}
 		else
 		{
-			DDR_C |= (Fifteen); //set the direction of the first 4 bit in port C "output"
+			DDR_C |= 0x0F; //set the direction of the first 4 bit in port C "output"
 		}
 		break;
 		case 'D':
 		case 'd':
 		if (dir == STD_IN)
 		{
-			DDR_D &= ~(Fifteen); //make the first 4 bit in port D are input
+			DDR_D &= 0xF0; //make the first 4 bit in port D are input
 		}
 		else
 		{
-			DDR_D |= (Fifteen );   //set the direction of the first 4 bit in port D "output"
+			DDR_D |= 0x0F;   //set the direction of the first 4 bit in port D "output"
 		}
 		
 		
+		break;
+		default:
 		break;
 	}
 }
