@@ -8,7 +8,7 @@
 
 #ifndef LCD_H_
 #define LCD_H_
-#include "../DIO/DIO.h"
+#include "../../MCAL/DIO/DIO.h"
 #define F_CPU 16000000ul
 #include <util/delay.h>
 #define LCD_Port         'A'

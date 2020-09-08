@@ -24,7 +24,7 @@
 	}
 	void Seg_1_DI(void)
 	{
-		DIO_WritePinDir(En,En1,STD_OUT);
+		DIO_WritePin(En,En1,STD_low);
 	}
 	void Seg_2_EN(void)
 	{
@@ -32,5 +32,5 @@
 	}
 	void Seg_2_DI(void)
 	{
-		DIO_WritePinDir(En,En2,STD_OUT);
+		DIO_WritePin(En,En2,STD_low);
 	}
