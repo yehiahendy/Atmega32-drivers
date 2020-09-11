@@ -158,3 +158,25 @@ for(i=0;i<8;i++)
 }
 	
 }
+
+void LCD_Move_Right(uint8 string[])
+{
+	for (uint8 i = 0 ; i < 16 - strlen(string) ;i++)
+	{
+		LCD_GotoXY(0,i);
+		LCD_WriteString(string);
+		_delay_ms(500);
+		LCD_clearScreen();
+	}
+}
+void LCD_Move_Left(uint8 string[])
+{
+	uint8 i = 16 - strlen(string);
+	for (i ; i >0  ;i--)
+	{
+		LCD_GotoXY(0,i);
+		LCD_WriteString(string);
+		_delay_ms(500);
+		LCD_clearScreen();
+	}
+}

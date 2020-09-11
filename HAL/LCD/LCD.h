@@ -57,7 +57,8 @@ void LCD_GotoXY(uint8 x, uint8 y);
 void LCD_SendNumber (uint16 Number);
 void LCD_SendRealNumber (float32  Number );
 void LCD_CreatChar(uint8 charnum,uint8 a_NewShape[] );
-
+void LCD_Move_Right(uint8 string[]);
+void LCD_Move_Left(uint8 string[]);
 
 
 #endif /* LCD_H_ */
