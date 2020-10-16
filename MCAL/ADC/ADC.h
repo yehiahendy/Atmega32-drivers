@@ -11,11 +11,13 @@
 #include "ADC_types.h"
 #include "ADC_config.h"
 #include "ADC_hw.h"
-#include "../Driver/Util/BIT_MATH.h"
-#include "../Driver/Util/STD_types.h"
+#include "../../Util/BIT_MATH.h"
+#include "../../Util/STD_types.h"
 #define ADEN      7
 #define ADSC      6
 #define ADATE     5
+#define ADIF      4
+#define ADIE      3
 /*=============================================================
  * Reference Analog Channel Bits
  * ============================================================

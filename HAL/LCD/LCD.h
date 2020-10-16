@@ -51,7 +51,7 @@ void LCD_init();
 void LCD_kick ();
 void LCD_SendCommand(uint8 command);
 void LCD_SendData(uint8 data);
-void LCD_WriteString(uint8 string[]);
+void LCD_WriteString(uint8 *string);
 void LCD_clearScreen ();
 void LCD_GotoXY(uint8 x, uint8 y);
 void LCD_SendNumber (uint16 Number);

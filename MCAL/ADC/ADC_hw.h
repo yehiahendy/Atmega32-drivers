@@ -8,7 +8,7 @@
 
 #ifndef ADC_HW_H_
 #define ADC_HW_H_
-#include "../Driver/Util/STD_types.h"
+#include "../../Util/STD_types.h"
 /*
 ///////////////////////////////////////////
 define the registers of ADC 

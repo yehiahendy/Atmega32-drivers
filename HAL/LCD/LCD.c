@@ -97,7 +97,7 @@ void LCD_SendData(uint8 data)
 	#endif	
 	_delay_ms(10);
 }
-void LCD_WriteString(uint8 string[])
+void LCD_WriteString(uint8 *string)
 {
 	uint8  i =0;
 	while(string[i] != '\0')

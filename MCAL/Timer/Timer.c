@@ -246,8 +246,7 @@ void PWM2_vidInit(void)
 		//chose PWM mode ( non-inverting or inverting )
 		TCCR2 &= Timer0_OC0_Clear_Msk;
 		TCCR2 |= Timer2_Mode_CTC_Selector;
-		//set OC0 as output
-		SET_Bit(DDR_B,3);
+		
 		
 }
 void PWM2_vidGenerate(uint8 u8DutyCycle)
