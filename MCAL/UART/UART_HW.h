@@ -8,7 +8,7 @@
 
 #ifndef UART_HW_H_
 #define UART_HW_H_
-#include "Atmega32-drivers/Util/STD_types.h"
+#include "../../Util/STD_types.h"
 
 // crate union which represent the UCSRA register 
 typedef union

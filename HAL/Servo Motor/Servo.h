@@ -8,8 +8,8 @@
 
 #ifndef SERVO_H_
 #define SERVO_H_
-#include "Atmega32-drivers/Util/STD_types.h"
-#include "Timer.h"
+#include "../../Util/STD_types.h"
+#include "../../MCAL/Timer/Timer.h"
 
 
 void Servo_vidInit(void);

@@ -8,10 +8,9 @@
 
 #ifndef UART_H_
 #define UART_H_
-#include "Atmega32-drivers/Util/STD_types.h"
+#include "../../Util/STD_types.h"
 #include "UART_HW.h"
 #include "UART_Config.h"
-#include "Atmega32-drivers/HAL/LCD/LCD.h"
 #define F_CPU 16000000ul
 /************************************************************************
  *  UART Functions                                                                    
