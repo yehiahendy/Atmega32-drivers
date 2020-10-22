@@ -9,7 +9,7 @@
 #define TIMER_H_
 
 #include "Timer_hw.h"
-#include "../../Util/BIT_MATH.h"
+#include "../../Util/STD_types.h"
 
 /*========================================
  * Timer0 functions

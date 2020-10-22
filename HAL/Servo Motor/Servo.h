@@ -8,14 +8,10 @@
 
 #ifndef SERVO_H_
 #define SERVO_H_
-<<<<<<< HEAD
 #include "../../Util/STD_types.h"
 #include "../../MCAL/Timer/Timer.h"
-=======
-#include "Atmega32-drivers/Util/STD_types.h"
-#include "Timer.h"
->>>>>>> 16c99b4e4975ad13771212d146457f5da4b0ff6f
-
+#include "../../Util/STD_types.h"
+#include "../../MCAL//Timer/Timer.h"
 
 void Servo_vidInit(void);
 void Servo_vidSetAngle(uint8 u8angle);

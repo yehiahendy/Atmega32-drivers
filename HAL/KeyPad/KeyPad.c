@@ -34,13 +34,13 @@ uint8 KP_u8GetKey()
 {
 	uint8 u8RetKey = '\0';
 	#ifdef KP_4
+	
 		for (uint8 row = 0; row < 4; row ++)
 		{
 			Dio_WritePortLevel(KP_Port,STD_high);
 			DIO_WritePin(KP_Port,row,STD_low);
 			for (uint8 col = 0; col < 4; col ++)
 			{
-				_delay_ms(10);
 				if ((DIO_ReadPin(KP_Port,col+4)) == 0)
 				{
 					if ((DIO_ReadPin(KP_Port,col+4)) == 0)
@@ -54,23 +54,27 @@ uint8 KP_u8GetKey()
 		return u8RetKey;
 	#endif
 		#ifdef KP_3
-		for (uint8 row = 0; row < 4; row ++)
+		while (1)
 		{
-			Dio_WritePortLevel(KP_Port,STD_high);
-			DIO_WritePin(KP_Port,row,STD_low);
-			for (uint8 col = 0; col < 3; col ++)
+			for (uint8 row = 0; row < 4; row ++)
 			{
-				_delay_ms(10);
-				if ((DIO_ReadPin(KP_Port,col+4)) == 0)
+				Dio_WritePortLevel(KP_Port,STD_high);
+				DIO_WritePin(KP_Port,row,STD_low);
+				for (uint8 col = 0; col < 3; col ++)
 				{
 					if ((DIO_ReadPin(KP_Port,col+4)) == 0)
 					{
-						u8RetKey = Keys[row][col];
+						if ((DIO_ReadPin(KP_Port,col+4)) == 0)
+						{
+							u8RetKey = Keys[row][col];
+						}
 					}
-				}
 
+				}
 			}
+			if (u8RetKey != '\0') break;
+
 		}
-		return u8RetKey;
+			return u8RetKey ;
 		#endif
 }
