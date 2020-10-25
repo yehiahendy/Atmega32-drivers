@@ -8,7 +8,7 @@
 
 #ifndef SPI_H_
 #define SPI_H_
-#include "SPI_Config.h"
+#include "../../Config/SPI_Config.h"
 #include "SPI_HW.h"
 #include "../../Util/STD_types.h"
 #include "../DIO/DIO.h"

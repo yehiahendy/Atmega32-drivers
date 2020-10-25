@@ -9,7 +9,7 @@
 #ifndef ADC_H_
 #define ADC_H_
 #include "ADC_types.h"
-#include "ADC_config.h"
+#include "../../Config/ADC_config.h"
 #include "ADC_hw.h"
 #include "../../Util/BIT_MATH.h"
 #include "../../Util/STD_types.h"

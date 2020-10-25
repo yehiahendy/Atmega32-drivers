@@ -5,7 +5,7 @@
  *  Author: yehia
  */ 
 #include "Timer.h"
-#include "Timer_Config.h"
+#include "../../Config/Timer_Config.h"
 #define  F_CPU 16000000ul
 /*========================================
  * Timer0 functions

@@ -36,16 +36,12 @@ void   UART_vidInit()
 	//choose speed 
 	UART.UCSRA->bit.U2X = normal_Speed;
 	//enable receive or transmit  
-	#if (UART_Direction == Transmitt)
 	UART.UCSRB->Byte = 0x00;
 	UART.UCSRB->bit.TXCIE = 1 ;
 	UART.UCSRB->bit.TXEN = 1 ;
-	#elif (UART_Direction == Receive)
-	UART.UCSRB->Byte = 0x00;
 	UART.UCSRB->bit.RXCIE = 1 ;
 	UART.UCSRB->bit.RXEN = 1 ;
 	UART.UCSRB->bit.UDRIE = 1 ;
-	#endif
 	
 	
 }

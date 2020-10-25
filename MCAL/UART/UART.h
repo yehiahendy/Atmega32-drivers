@@ -10,7 +10,7 @@
 #define UART_H_
 #include "../../Util/STD_types.h"
 #include "UART_HW.h"
-#include "UART_Config.h"
+#include "../../Config/UART_Config.h"
 #define F_CPU 16000000ul
 /************************************************************************
  *  UART Functions                                                                    
@@ -46,9 +46,6 @@ uint8  *UART_u8ReadString(void);
 #define Character_Size_6bit      0b00000010
 #define Character_Size_7bit      0b00000100
 #define Character_Size_8bit      0b00000110
-//Send or recive 
-#define Receive                  0
-#define Transmitt                1
 
 
 
