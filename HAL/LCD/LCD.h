@@ -13,9 +13,9 @@
 #include <util/delay.h>
 #define LCD_Port         'A'
 #define LCD_ControlPort  'B'
-#define LCD_RS             1
-#define LCD_Rw             2
-#define LCD_E              3
+#define LCD_RS             0
+#define LCD_Rw             1
+#define LCD_E              2
 /*
 #define LCD_D0             0
 #define LCD_D1             1

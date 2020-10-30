@@ -13,6 +13,7 @@
 
 void DIO_WritePinDir(uint8 Port,uint8 PinNo,STD_Direction Dir);
 void DIO_WritePin(uint8 Port,uint8 PinNo,STD_levelType level);
+void DIO_TogglePin(uint8 Port,uint8 PinNo);
 STD_levelType DIO_ReadPin(uint8 Port,uint8 PinNo);
 void Dio_WritePortDir(uint8 PORT,STD_Direction dir);
 uint8 Dio_ReadPort(uint8 PORT );

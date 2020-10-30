@@ -436,3 +436,26 @@ void Dio_WriteLowNibbleDir(uint8 port, STD_Direction dir)
 		break;
 	}
 }
+void DIO_TogglePin(uint8 Port,uint8 PinNo)
+{
+	switch (Port)
+	{
+		case 'A':
+		case 'a':
+		TOGGLE_BIT(PORT_A,PinNo);
+		break;
+		case 'B':
+		case 'b':
+		TOGGLE_BIT(PORT_B,PinNo);
+		break;
+		case 'C':
+		case 'c':
+		TOGGLE_BIT(PORT_C,PinNo);
+		break;
+		case 'D':
+		case 'd':
+		TOGGLE_BIT(PORT_D,PinNo);
+		break;
+	}
+
+}

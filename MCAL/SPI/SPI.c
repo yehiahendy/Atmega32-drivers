@@ -17,7 +17,7 @@ void  SPI_vidInit(void)
 	DIO_WritePinDir('b',5,STD_OUT);
 	DIO_WritePinDir('b',6,STD_IN);
 	DIO_WritePinDir('b',7,STD_OUT);
-	DIO_WritePin('b',4,STD_low);
+
 	#elif (SPI_Type_Selector == SPI_Slave)
 	DIO_WritePinDir('b',4,STD_IN);
 	DIO_WritePinDir('b',5,STD_IN);
@@ -44,11 +44,16 @@ void  SPI_vidInit(void)
 	SET_Bit(SPCR,SPE); 
 	
 }
-uint8 SPI_u8Receive_Send_Date(uint8 u8SendData)
+void SPI_Send_Date(uint8 u8SendData)
 {
-	uint8 u8ReceiveData;
+	/*uint8 u8ReceiveData;*/
 	SPDR = u8SendData; //send data
-	while((GET_Bit(SPSR,SPIF)) == 0); //wait to transmitt the data 
-	u8ReceiveData = SPDR; //Receive data 
-	return u8ReceiveData;
+	while((GET_Bit(SPSR,SPIF)) == 0); //wait to transmitt the data
+
+}
+uint8 SPI_Receive(void)
+{
+
+	while((GET_Bit(SPSR,SPIF)) == 0); //wait to transmitt the data
+	return SPDR; //Receive data
 }

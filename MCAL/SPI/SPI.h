@@ -17,7 +17,9 @@
  ************************************************************************/
 
 void  SPI_vidInit(void);
-uint8 SPI_u8Receive_Send_Date(uint8);
+uint8 SPI_Receive(void);
+void SPI_Send_Date(uint8 u8SendData);
+
 
 /************************************************************************
  * SPI configs                                                        

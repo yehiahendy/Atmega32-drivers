@@ -13,7 +13,7 @@
  *  SPI_Master				          0b00001000
  *  SPI_Slave						  0b00000000
 ***************************************************************/
-#define  SPI_Type_Selector      SPI_Master
+#define  SPI_Type_Selector      SPI_Slave	
  
  /********************** Modes **********************************
   *  SPI_Mode0			Read on rising edge changed on falling edge
@@ -30,6 +30,6 @@
 #define  SPI_SCK_Frequency_64             0b00000000
 #define  SPI_SCK_Frequency_128            0b00000000
 ********************************************************************/
-#define  SPI_SCK_Frequency_Selector      SPI_SCK_Frequency_64
+#define  SPI_SCK_Frequency_Selector      SPI_SCK_Frequency_128
 #define  Single 
 #endif /* SPI_CONFIG_H_ */
