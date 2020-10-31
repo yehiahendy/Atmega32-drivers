@@ -64,7 +64,7 @@ uint8 KP_u8GetKey()
 				{
 					if ((DIO_ReadPin(KP_Port,col+4)) == 0)
 					{
-						_delay_ms(1100);
+						_delay_ms(120);
 						if ((DIO_ReadPin(KP_Port,col+4)) == 0)
 						{
 							u8RetKey = Keys[row][col];
